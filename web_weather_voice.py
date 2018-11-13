@@ -69,7 +69,6 @@ def get_weather():
     sd = soup.find('div', attrs={'class': 'wea_about clearfix'}).span.getText()
     sd_num = re.search(r'\d+', sd).group()
     sd_num_zh = numtozh(int(sd_num))
-    print(sd_num_zh)
     sd = sd.replace(sd_num, sd_num_zh)
     wind = soup.find('div', attrs={'class': 'wea_about clearfix'}).em.getText()
     aqi = soup.find('div', attrs={'class': 'wea_alert clearfix'}).em.getText()
@@ -78,7 +77,7 @@ def get_weather():
     aqi = aqi.replace(aqi_num, aqi_num_zh).replace(' ', ',空气质量')
     info = soup.find('div', attrs={'class': 'wea_tips clearfix'}).em.getText()
     sd = sd.replace(' ', '百分之').replace('%', '')
-    aqi = 'aqi' + aqi
+    aqi = '实时空气质量指数' + aqi
     info = info.replace('，', ',')
     # 获取今天的日期
     today = datetime.now().date().strftime('%Y年%m月%d日')
