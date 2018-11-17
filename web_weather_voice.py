@@ -80,9 +80,10 @@ def get_weather():
     aqi = '实时空气质量指数' + aqi
     info = info.replace('，', ',')
     # 获取今天的日期
-    today = datetime.now().date().strftime('%Y年%m月%d日')
+    today = datetime.now().strftime('%p %Y年%m月%d日 %I点%M分%S秒')
+    today = today.replace('PM', '下午好！今天是').replace('AM', '上午好！今天是')
     # 将获取的信息拼接成一句话
-    text = '早上好！今天是%s,天气%s,温度%s摄氏度,%s,%s,%s,%s' % \
+    text = '%s, 实时天气是%s, 温度%s 摄氏度 ,%s ,%s ,%s ,%s' % \
            (today, weather, temp, sd, wind, aqi, info)
     return text
 
